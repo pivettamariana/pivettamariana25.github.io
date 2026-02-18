@@ -1,0 +1,569 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+
+:root{
+    --bordo: #6d122a;
+    --claro: #ecf0ee;
+}
+
+body{
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 100%;
+}
+
+/* Header y hero */
+
+header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    text-align: right;
+    background: rgba(109, 18, 42, .55);
+    backdrop-filter: blur(8px);
+    padding: 1.8em;
+    padding-right: 4.5em;
+    border-radius: 2px;
+}
+
+header a{
+    color: var(--claro);
+    font-size: 1.1em;
+    position: relative;
+    padding-bottom: 0.2em;
+    padding: 0.3em 1em;
+}
+
+header a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0.1em;
+    background: var(--claro);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+header a:hover::after{
+    transform: scaleX(1);
+}
+
+.hero{
+    min-height: 100vh;
+    background: var(--bordo);
+    color: var(--claro);
+    position: relative;
+    padding: 3em;
+}
+
+.hero > div{
+  position: absolute;
+  left: 4.5em;
+  bottom: 4.5em;
+}
+
+.hero h1{
+    font-size: 8em;
+    line-height: 1;
+    font-weight: 500;
+}
+
+section { scroll-margin-top: 8em;}
+
+
+/* Sobre mi */
+
+#sobre-mi{
+    background: var(--claro);
+    color: var(--bordo);
+    min-height: 40vh;
+    display: flex;
+    gap: 4em;
+    padding: 4.5em;
+    align-items: center;
+}
+
+#sobre-mi > :nth-of-type(1){
+    max-width: 32em;
+}
+
+#sobre-mi h2{
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 2.2em;
+    font-weight: 600;
+    color: var(--bordo);
+    margin-bottom: 0.9em;
+}
+
+#sobre-mi p{
+    font-family: "IBM Plex Serif", serif;
+    font-size: 1.1em;
+    line-height: 1.3em;
+    max-width: 26em;
+    color: black;
+}
+
+#sobre-mi > :nth-of-type(2){
+    justify-self: end;
+    width: min(24em, 42vw);
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    margin: 0;
+}
+
+#sobre-mi img{
+    width: 70%;
+    height: 90%;
+    object-fit: cover;
+    display: block;
+    margin-left: 9em;
+}
+
+
+/* Mi evolución */
+
+#evolucion{
+    background: var(--bordo);
+    min-height: 70vh;
+    padding: 4.5em;
+}
+
+.titulo-evolucion h2{
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 2.25em;
+    font-weight: 600;
+    color: var(--claro);
+    margin: 0;
+  line-height: 1;
+  transform: translateY(-0.1em);
+  margin-left: -.2em;
+}
+
+.titulo-evolucion{
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  margin-bottom: 1.5em;
+  margin-top: -.6em;
+}
+
+.titulo-evolucion img{
+  height: 11em;
+  width: auto;
+  display: block;
+  transform: none;
+  margin-left: -2.1em;
+}
+
+#evolucion > div:nth-of-type(2){
+  display: flex;
+  gap: 3em;
+  align-items: start;
+}
+
+#evolucion details{
+    border: 1px solid var(--claro);
+    border-radius: 1em;
+    padding: 1em;
+    transition: .35s ease color .3s ease, border .35s ease;
+    width: 22%;
+    flex-grow: 1;
+}
+
+#evolucion summary{
+    list-style: none;
+    cursor: pointer;
+    position: relative;
+    padding-right: 1.6em;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--claro);
+}
+    
+#evolucion summary::-webkit-details-marker{
+    display: none;
+}
+
+#evolucion summary::after{
+    content: "+";
+   position: absolute;
+   right: 0;
+   top: 0.4em;
+   font-size: 1.2em;
+   font-weight: 400;
+   transition: transform .3s ease, color .3s ease;
+}
+
+#evolucion p{
+    font-family: "IBM Plex Sans", serif;
+    font-size: 1em;
+    line-height: 1.30;
+   
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    margin-top: 0;
+
+    transition: max-height .4s ease, opacity .3s ease, margin .3s ease;
+}
+
+#evolucion details[open]{
+    background: var(--claro);
+    border: 1px solid var(--claro);
+}
+
+#evolucion details[open] summary{
+    color: var(--bordo);
+}
+
+#evolucion details[open] summary::after{
+    content: "-";
+    color: var(--bordo);
+}
+
+#evolucion details[open] p{
+    max-height: 20em;
+    opacity: 1;
+    margin-top: 1em;
+    color: var(--bordo);
+}
+
+
+/* Proyectos / Revista */
+
+#revista{
+    background: #202a44;
+}
+
+#revista > section:nth-of-type(1){
+     background: #202a44;
+  padding: 4.5em 0em;
+  margin-inline: auto;
+  max-width: 72em;
+}
+
+
+#revista > section:nth-of-type(1) h2{
+  font-family: "IBM Plex Sans", sans-serif;
+  color: #ffffff;
+  font-size: 2.25em;
+  font-weight: 600;
+  margin-bottom: .3em;
+}
+
+#revista > section:nth-of-type(1) p{
+  font-family: "IBM Plex Serif", serif;
+  font-size: 1.05em;
+  line-height: 1.50;
+  max-width: 44em;
+  color: #ffffff;
+}
+
+#revista section:nth-of-type(2){
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2em;
+  background: #c4c6c5;
+  overflow: hidden;
+}
+
+#revista > section:nth-of-type(2) img{
+  width: auto;
+  max-width: 88vw;
+  max-height: 76vh;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+
+#revista > section:nth-of-type(3){
+    padding: 0;
+    margin: 0;
+}
+
+
+#revista > section:nth-of-type(3) div{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    width: 100%;
+}
+
+#revista > section:nth-of-type(3) figure{
+    overflow: hidden;
+}
+
+#revista > section:nth-of-type(3) img{
+    width: 100%;
+    height: 14em;
+    object-fit: cover;
+    display: block;
+}
+
+#revista > section:nth-of-type(3) img{
+  transition: transform .4s ease;
+}
+
+#revista > section:nth-of-type(3) img:hover{
+  transform: scale(1.2);
+}
+
+
+.detalle{
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  background: white;
+}
+
+.detalle > figure{
+  overflow: hidden;
+  margin: 0;
+  display: grid;
+  place-items: center;
+}
+
+.detalle > figure:first-of-type img{
+  width: auto;
+  max-width: 80%;        
+  max-height: 90vh;      
+  height: auto;
+  object-fit: contain;
+}
+
+.detalle > figure:last-of-type img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+#animacion-revista{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+#animacion-revista video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* llena la pantalla sin deformarse */
+  display: block;
+  opacity: 0;
+    animation: fadeIn 1s ease forwards; 
+}
+
+@keyframes fadeIn{
+  to{ opacity: 1; }
+}
+
+
+
+/* Proyectos / Pictogramas */
+
+#pictogramas{
+    background-color: #fcf1d6;
+}
+
+#pictogramas > section:nth-of-type(1){
+  background: #fcf1d6;              
+  padding: 4.5em 0em;
+  margin-inline: auto;
+    max-width: 72em;
+}
+
+
+#pictogramas > section:nth-of-type(1) h2{
+  font-family: "IBM Plex Sans", sans-serif;
+  color: #78a040;                      
+  font-size: 2.25em;
+  font-weight: 600;
+  margin-bottom: .3em;
+}
+
+#pictogramas > section:nth-of-type(1) p{
+  font-family: "IBM Plex Serif", serif;
+  font-size: 1.05em;
+  line-height: 1.50;
+  max-width: 44em;
+  color: #78a040;                      
+}
+
+
+#pictogramas > section:nth-of-type(2){
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2em;
+  background: #78a040;
+  overflow: hidden;
+}
+
+#pictogramas > section:nth-of-type(2) img{
+  width: auto;
+  max-width: 88vw;
+  max-height: 78vh;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+#pictogramas > section:nth-of-type(3){
+  padding: 0;
+  margin: 0;
+}
+
+#pictogramas > section:nth-of-type(3) div{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  width: 100%;
+}
+
+#pictogramas > section:nth-of-type(3) figure{
+    overflow: hidden;
+}
+
+#pictogramas > section:nth-of-type(3) img{
+    width: 100%;
+    height: 14em;
+    object-fit: cover;
+    display: block;
+}
+
+#pictogramas > section:nth-of-type(3) img{
+   transition: transform .4s ease;
+}
+
+#pictogramas > section:nth-of-type(3) img:hover{
+   transform: scale(1.2);
+}
+
+
+.palabras{
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  background: white;
+}
+
+.palabras > figure{
+  overflow: hidden;
+  margin: 0;
+  display: grid;
+  place-items: center;
+}
+
+.palabras > figure:first-of-type img{
+  width: auto;
+  max-width: 80%;        
+  max-height: 90vh;      
+  height: auto;
+  object-fit: contain;
+}
+
+.palabras > figure:last-of-type img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+#animacion-pictogramas{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+#animacion-pictogramas video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* llena la pantalla sin deformarse */
+  display: block;
+  opacity: 0;
+    animation: fadeIn 1s ease forwards; 
+}
+
+
+@keyframes fadeIn{
+  to{ opacity: 1; }
+}
+
+
+/* Footer */
+
+#contacto{
+  background: var(--bordo);
+  color: var(--claro);
+  padding: 4.5em 3em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3em;
+  align-items: start;
+}
+
+#contacto h2{
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 2.25em;
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+#contacto > div:nth-of-type(2){
+  display: grid;
+  gap: 1em;
+  justify-items: start;
+}
+
+#contacto a,
+#contacto p{
+  font-family: "IBM Plex Serif", serif;
+  font-size: 1.1em;
+  line-height: 1.4;
+  color: var(--claro);
+}
+
+#contacto a{
+  text-decoration: none;
+  position: relative;
+  padding-bottom: .2em;
+}
+
+#contacto a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  height:.08em;
+  background: var(--claro);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .35s ease;
+}
+
+#contacto a:hover::after{
+  transform: scaleX(1);
+}
